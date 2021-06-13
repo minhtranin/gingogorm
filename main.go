@@ -13,12 +13,12 @@ var (
 )
 
 func main() {
-	// gin.SetMode(gin.ReleaseMode)
+	gin.SetMode(gin.DebugMode)
 	server := gin.Default()
 	server.GET("findAll", func(ctx *gin.Context) {
 		ctx.JSON(200, videoCtl.FindAll())
 	})
-	server.GET("save", func(ctx *gin.Context) {
+	server.POST("save", func(ctx *gin.Context) {
 		ctx.JSON(200, videoCtl.Save(ctx))
 	})
 	server.Run(":8888")
