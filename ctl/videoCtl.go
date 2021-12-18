@@ -9,7 +9,7 @@ import (
 
 type VideoCtl interface {
 	FindAll() []entity.Video
-	Save(ctx *gin.Context) entity.Video
+	Save(ctx *gin.Context) error
 }
 
 type ctl struct {
@@ -26,9 +26,12 @@ func (c *ctl) FindAll() []entity.Video {
 	return c.service.FindAll()
 }
 
-func (c *ctl) Save(ctx *gin.Context) entity.Video {
+func (c *ctl) Save(ctx *gin.Context) error {
 	var video entity.Video
-	ctx.BindJSON(&video)
+	err := ctx.ShouldBindJSON(&video)
+	if err != nil {
+		return err
+	}
 	c.service.Save(video)
-	return video
+	return nil
 }

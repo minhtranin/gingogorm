@@ -1,0 +1,20 @@
+version: '3.6'
+
+services:
+  gingo:
+    # env_file: .env
+    build:
+      context: ./gingo
+    working_dir: /go/src/work/gingo
+    volumes:
+      - ./gingo:/go/src/work/gingo:cached
+    restart: always
+    command: sh -c "go mod download && fresh"
+    environment:
+      DB_URI: mongodb://user_svc:Abc123@db:27017
+    ports:
+      - "8888:8888"
+    # links:
+    #   - db
+volumes:
+  data:

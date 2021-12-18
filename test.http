@@ -1,0 +1,21 @@
+# POST http://localhost:8888/save
+# content-type: application/json
+
+# {
+#     "title": "minhtran.in@outlook.com",
+#     "description": "123456789",
+#     "url": "google"
+# }
+
+# GET http://localhost:8888/findAll
+# content-type: application/json
+
+
+POST http://localhost:8888/saveMN
+content-type: application/json
+
+{
+    "start": "minhtran.in@outlook.com",
+    "description": "123456789",
+    "url": "google"
+}
